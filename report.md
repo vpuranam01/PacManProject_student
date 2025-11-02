@@ -9,7 +9,7 @@ Akhilesh Puranam
 - Forked the Pac-Man repository to create group's own repository
 - Implemented player.py and test_player.py
 - Created an issue to the base repository to report 1 bug
-- Submitted a pull request
+- Submitted a pull request and reviewed push request for Ghost Implementation
 
 Kamran Mair
 
