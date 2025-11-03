@@ -15,3 +15,5 @@ Kamran Mair
 
 
 Rahul Anantuni
+- Implemented game_board.py
+- Submitted a pull request and reviewed push request for Item Implementation
