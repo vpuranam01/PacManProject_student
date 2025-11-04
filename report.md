@@ -12,7 +12,8 @@ Akhilesh Puranam
 - Submitted a pull request and reviewed push request for Ghost Implementation
 
 Kamran Mair
-
+  - Implemented item.py
+  - Submitted a pull request and reviewed push request for Game_board Implementation
 
 Rahul Anantuni
 - Implemented game_board.py
