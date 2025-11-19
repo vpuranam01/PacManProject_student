@@ -4,6 +4,7 @@ Pranav Khatri
 - Created report.md file
 - Renamed player to pacman using the following commands:
   grep -rIl "player" . | xargs sed -i '' 's/player/pacman/g'
+  
   grep -rIl "Player" . | xargs sed -i '' 's/Player/Pacman/g'
 
   Used grep and sed commands. We have two commands because
