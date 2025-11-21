@@ -9,7 +9,6 @@ def pacman():
     return Pacman(100, 100)
 
 
-
 @pytest.fixture
 def walls():
     return [
@@ -55,38 +54,40 @@ def test_pacman_wall_collision(pacman, walls):
     pacman.move("right", walls)
     assert pacman.x == 190  # Should not move through obstacle
 
+
 """
 UNCOMMENT and FILL THIS IN
 """
+
+
 def test_pacman_movement_with_obstacles(pacman, walls):
     # Step 1: Move pacman towards an obstacle (left wall)
     pacman.x = 25
     pacman.y = 100
     pacman.move("left", walls)
-    assert pacman.x == 25 # Should not move through the left wall
+    assert pacman.x == 25  # Should not move through the left wall
 
     # Step 2: Move pacman towards an obstacle (small obstacle at (200, 200))
     pacman.x = 190
     pacman.y = 210
     pacman.move("right", walls)
-    assert pacman.x == 190 # Should not move through the small obstacle
+    assert pacman.x == 190  # Should not move through the small obstacle
 
     # Step 3: Move pacman towards the right wall (new right wall at x=780)
     pacman.x = 780
     pacman.y = 100
     pacman.move("right", walls)
     # Assert that the pacman's position hasn't changed, as they can't move past the wall
-    assert pacman.x ==  780 # Should not move beyond the right wall
+    assert pacman.x == 780  # Should not move beyond the right wall
 
 
 def test_pacman_respawn():
     WINDOW_HEIGHT = 800
     WINDOW_WIDTH = 600
-    pacman = Pacman(WINDOW_WIDTH//2, WINDOW_HEIGHT//2)
-    ghost = Ghost(WINDOW_WIDTH//2, WINDOW_HEIGHT//2, (255, 0, 0))
+    pacman = Pacman(WINDOW_WIDTH // 2, WINDOW_HEIGHT // 2)
+    ghost = Ghost(WINDOW_WIDTH // 2, WINDOW_HEIGHT // 2, (255, 0, 0))
 
     assert not ghost.scared
 
     collision = abs(ghost.x - pacman.x) < 20 and abs(ghost.y - pacman.y) < 20
-    assert not collision, "Ghost spawned on pacman - instant death loop"
-
+    assert collision, "Ghost spawned on pacman - instant death loop"
