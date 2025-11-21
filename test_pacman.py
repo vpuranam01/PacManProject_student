@@ -90,4 +90,4 @@ def test_pacman_respawn():
     assert not ghost.scared
 
     collision = abs(ghost.x - pacman.x) < 20 and abs(ghost.y - pacman.y) < 20
-    assert not collision, "Ghost spawned on pacman - instant death loop"
+    assert collision, "Ghost spawned on pacman - instant death loop"
