@@ -1,12 +1,12 @@
 import pytest
 import pygame
-from player import Player
+from pacman import Pacman
 from ghost import Ghost
 
 
 @pytest.fixture
-def player():
-    return Player(100, 100)
+def pacman():
+    return Pacman(100, 100)
 
 
 
@@ -19,74 +19,74 @@ def walls():
     ]
 
 
-def test_player_initialization(player):
-    assert player.x == 100
-    assert player.y == 100
-    assert player.direction == "right"
-    assert player.speed == 2
-    assert player.radius == 10
+def test_pacman_initialization(pacman):
+    assert pacman.x == 100
+    assert pacman.y == 100
+    assert pacman.direction == "right"
+    assert pacman.speed == 2
+    assert pacman.radius == 10
 
 
-def test_player_movement_no_walls(player):
-    initial_x = player.x
-    initial_y = player.y
+def test_pacman_movement_no_walls(pacman):
+    initial_x = pacman.x
+    initial_y = pacman.y
 
-    player.move("right", [])
-    assert player.x == initial_x + player.speed
-    assert player.y == initial_y
-    assert player.direction == "right"
+    pacman.move("right", [])
+    assert pacman.x == initial_x + pacman.speed
+    assert pacman.y == initial_y
+    assert pacman.direction == "right"
 
-    player.move("left", [])
-    assert player.x == initial_x
-    assert player.y == initial_y
-    assert player.direction == "left"
+    pacman.move("left", [])
+    assert pacman.x == initial_x
+    assert pacman.y == initial_y
+    assert pacman.direction == "left"
 
 
-def test_player_wall_collision(player, walls):
+def test_pacman_wall_collision(pacman, walls):
     # Move towards left wall
-    player.x = 25
-    player.y = 100
-    player.move("left", walls)
-    assert player.x == 25  # Should not move through wall
+    pacman.x = 25
+    pacman.y = 100
+    pacman.move("left", walls)
+    assert pacman.x == 25  # Should not move through wall
 
     # Move towards obstacle
-    player.x = 190
-    player.y = 210
-    player.move("right", walls)
-    assert player.x == 190  # Should not move through obstacle
+    pacman.x = 190
+    pacman.y = 210
+    pacman.move("right", walls)
+    assert pacman.x == 190  # Should not move through obstacle
 
 """
 UNCOMMENT and FILL THIS IN
 """
-def test_player_movement_with_obstacles(player, walls):
-    # Step 1: Move player towards an obstacle (left wall)
-    player.x = 25
-    player.y = 100
-    player.move("left", walls)
-    assert player.x == 25 # Should not move through the left wall
+def test_pacman_movement_with_obstacles(pacman, walls):
+    # Step 1: Move pacman towards an obstacle (left wall)
+    pacman.x = 25
+    pacman.y = 100
+    pacman.move("left", walls)
+    assert pacman.x == 25 # Should not move through the left wall
 
-    # Step 2: Move player towards an obstacle (small obstacle at (200, 200))
-    player.x = 190
-    player.y = 210
-    player.move("right", walls)
-    assert player.x == 190 # Should not move through the small obstacle
+    # Step 2: Move pacman towards an obstacle (small obstacle at (200, 200))
+    pacman.x = 190
+    pacman.y = 210
+    pacman.move("right", walls)
+    assert pacman.x == 190 # Should not move through the small obstacle
 
-    # Step 3: Move player towards the right wall (new right wall at x=780)
-    player.x = 780
-    player.y = 100
-    player.move("right", walls)
-    # Assert that the player's position hasn't changed, as they can't move past the wall
-    assert player.x ==  780 # Should not move beyond the right wall
+    # Step 3: Move pacman towards the right wall (new right wall at x=780)
+    pacman.x = 780
+    pacman.y = 100
+    pacman.move("right", walls)
+    # Assert that the pacman's position hasn't changed, as they can't move past the wall
+    assert pacman.x ==  780 # Should not move beyond the right wall
 
 
-def test_player_respawn():
+def test_pacman_respawn():
     WINDOW_HEIGHT = 800
     WINDOW_WIDTH = 600
-    player = Player(WINDOW_WIDTH//2, WINDOW_HEIGHT//2)
+    pacman = Pacman(WINDOW_WIDTH//2, WINDOW_HEIGHT//2)
     ghost = Ghost(WINDOW_WIDTH//2, WINDOW_HEIGHT//2, (255, 0, 0))
 
     assert not ghost.scared
 
-    collision = abs(ghost.x - player.x) < 20 and abs(ghost.y - player.y) < 20
-    assert not collision, "Ghost spawned on player - instant death loop"
+    collision = abs(ghost.x - pacman.x) < 20 and abs(ghost.y - pacman.y) < 20
+    assert not collision, "Ghost spawned on pacman - instant death loop"
 
