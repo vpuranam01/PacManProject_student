@@ -9,7 +9,6 @@ def player():
     return Player(100, 100)
 
 
-
 @pytest.fixture
 def walls():
     return [
@@ -55,38 +54,40 @@ def test_player_wall_collision(player, walls):
     player.move("right", walls)
     assert player.x == 190  # Should not move through obstacle
 
+
 """
 UNCOMMENT and FILL THIS IN
 """
+
+
 def test_player_movement_with_obstacles(player, walls):
     # Step 1: Move player towards an obstacle (left wall)
     player.x = 25
     player.y = 100
     player.move("left", walls)
-    assert player.x == 25 # Should not move through the left wall
+    assert player.x == 25  # Should not move through the left wall
 
     # Step 2: Move player towards an obstacle (small obstacle at (200, 200))
     player.x = 190
     player.y = 210
     player.move("right", walls)
-    assert player.x == 190 # Should not move through the small obstacle
+    assert player.x == 190  # Should not move through the small obstacle
 
     # Step 3: Move player towards the right wall (new right wall at x=780)
     player.x = 780
     player.y = 100
     player.move("right", walls)
     # Assert that the player's position hasn't changed, as they can't move past the wall
-    assert player.x ==  780 # Should not move beyond the right wall
+    assert player.x == 780  # Should not move beyond the right wall
 
 
 def test_player_respawn():
     WINDOW_HEIGHT = 800
     WINDOW_WIDTH = 600
-    player = Player(WINDOW_WIDTH//2, WINDOW_HEIGHT//2)
-    ghost = Ghost(WINDOW_WIDTH//2, WINDOW_HEIGHT//2, (255, 0, 0))
+    player = Player(WINDOW_WIDTH // 2, WINDOW_HEIGHT // 2)
+    ghost = Ghost(WINDOW_WIDTH // 2, WINDOW_HEIGHT // 2, (255, 0, 0))
 
     assert not ghost.scared
 
     collision = abs(ghost.x - player.x) < 20 and abs(ghost.y - player.y) < 20
     assert not collision, "Ghost spawned on player - instant death loop"
-
