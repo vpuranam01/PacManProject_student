@@ -19,4 +19,7 @@ Kamran Mair
 
 
 Rahul Anantuni
-
+- Created feature/secureinfo branch
+- Stop tracking the .env file in Git by adding .env to .gitignore
+- Removed sensitive .env info from being shown in any previous commits
+- Commented on PR #1 and Merged Feature Rename to main
