@@ -2,6 +2,7 @@ Report:
 
 Pranav Khatri
 - Created report.md file
+- Reviewed PR for CI/CD Pipeline
 - Renamed Player to Pacman using the following commands:
 
 grep -rIl "player" . | xargs sed -i '' 's/player/pacman/g'
@@ -13,14 +14,15 @@ is for lowercase "player" while the other command is for uppercase "Player".
 
 
 Akhilesh Puranam
-- Created CI/Pipeline
-- Reviewed PR request for Secure Sensitive Information
+- Created CI/CD Pipeline
+- Reviewed PR for Secure Sensitive Information
 - Reviewd PR for report and resolved merge conflicts
 
 Kamran Mair
-
+- Worked on securing sensitive information
 
 
 Rahul Anantuni
-
+- Worked on securing sensitive information
+- Reviewed PR for Renaming
 
