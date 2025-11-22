@@ -13,8 +13,9 @@ is for lowercase "player" while the other command is for uppercase "Player".
 
 
 Akhilesh Puranam
-
-
+- Created CI/Pipeline
+- Reviewed PR request for Secure Sensitive Information
+- Reviewd PR for report and resolved merge conflicts
 
 Kamran Mair
 
