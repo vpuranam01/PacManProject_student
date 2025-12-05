@@ -4,6 +4,7 @@ Pranav Khatri
 - Created report.md file
 - Implemented ghost.py and wrote test_ghost.py
 - Submitted a pull request and reviewed push request for Pacman Implementation
+- Implemented item.py and created the feature/item branch
 
 Akhilesh Puranam
 - Forked the Pac-Man repository to create group's own repository
@@ -12,7 +13,6 @@ Akhilesh Puranam
 - Submitted a pull request and reviewed push request for Ghost Implementation
 
 Kamran Mair
-  - Implemented item.py
 
 Rahul Anantuni
 - Implemented game_board.py
